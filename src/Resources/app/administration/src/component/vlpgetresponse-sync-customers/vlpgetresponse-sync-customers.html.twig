@@ -1,0 +1,59 @@
+<div>
+    <sw-loader v-if="isFormLoading"></sw-loader>
+
+    <sw-entity-multi-select
+            v-if="APIValid && !isFormLoading"
+            entity="customer_group"
+            :entity-collection="customerGroups"
+            :label="$tc('vlpgetresponse-plugin.lblCustomerGroups')"
+            @update:entity-collection="selectCustomerGroups"
+    />
+
+    <sw-entity-multi-select
+            v-if="APIValid && !isFormLoading"
+            entity="country"
+            :entity-collection="countries"
+            :label="$tc('vlpgetresponse-plugin.lblCountries')"
+            @update:entity-collection="selectCountries"
+    />
+
+    <div class="sw-field" v-for="field in fields">
+        <sw-select-field
+            v-if="field.type === 'select'"
+            :label="field.label"
+            :value="field.savedValue"
+            :disabled="isSyncInProgress"
+            @update:value="saveField($event, field.id)" >
+
+            <option></option>
+
+            <option v-for="option in field.options"
+                    :value="option.value">
+                {{ option.label }}
+            </option>
+        </sw-select-field>
+    </div>
+
+    <div class="sw-field" v-if="!isFormLoading && APIValid">
+        <sw-button-process
+            :isLoading="isLoading"
+            :disabled="isSyncInProgress"
+            :processSuccess="isSyncFinish"
+            @click="syncStart"
+        >
+            {{ $tc('vlpgetresponse-plugin.startSync') }}
+        </sw-button-process>
+    </div>
+
+    <div class="sw-field" v-if="totalSynced > 0">
+        <sw-progress-bar
+            :value="totalSynced"
+            :max-value="totalToSync"
+        >
+        </sw-progress-bar>
+
+        <div class="vlphubspot-progress-indicator">
+            {{ totalSynced }}/{{ totalToSync }}
+        </div>
+    </div>
+</div>

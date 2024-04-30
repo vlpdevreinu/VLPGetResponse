@@ -1,0 +1,14 @@
+{
+  "vlpgetresponse-plugin": {
+    "startSync": "Sync starten",
+    "lblCustomerGroups": "Kundengruppen",
+    "lblCountries": "Länder",
+
+    "lblSuccess": "Erfolg",
+    "lblSuccessSync": "Sync erfolgreich",
+
+    "lblError": "Fehler",
+    "lblErrorNoCampaign": "Keine Kampagnen gefunden",
+    "lblTotalError": "Synchronisierung fehlgeschlagen"
+  }
+}

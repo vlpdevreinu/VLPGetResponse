@@ -1,0 +1,27 @@
+{
+    "name": "v-l-p-get-response/v-l-p-get-response",
+    "description": "v-l-p-get-response/v-l-p-get-response",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "6.6.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "VLPGetResponse\\VLPGetResponse",
+        "label": {
+            "de-DE": "VLPGetResponse",
+            "en-GB": "VLPGetResponse"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "VLPGetResponse\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VLPGetResponse\\Tests\\": "tests/"
+        }
+    }
+}
